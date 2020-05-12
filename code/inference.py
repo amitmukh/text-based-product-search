@@ -26,7 +26,6 @@ def model_fn(model_dir):
 
 # Deserialize the Invoke request body into an object we can perform prediction on
 def input_fn(serialized_input_data, content_type=CONTENT_TYPE):
-    print(serialized_input_data)
     logger.info('Deserializing the input data.')
     if content_type == CONTENT_TYPE:
         data = [serialized_input_data.decode('utf-8')]
@@ -35,7 +34,6 @@ def input_fn(serialized_input_data, content_type=CONTENT_TYPE):
 
 # Perform prediction on the deserialized object, with the loaded model
 def predict_fn(input_object, model):
-    print(input_object)
     logger.info("Calling model")
     start_time = time.time()
     sentence_embeddings = model.encode(input_object)
