@@ -7,9 +7,7 @@ import os
 import json
 import io
 import time
-import tarfile
 import torch
-import shutil
 from sentence_transformers import models, losses, SentenceTransformer
 
 logger = logging.getLogger(__name__)
@@ -42,8 +40,6 @@ def predict_fn(input_object, model):
     start_time = time.time()
     sentence_embeddings = model.encode(input_object)
     print("--- Inference time: %s seconds ---" % (time.time() - start_time))
-    #response = {}
-    #response['vector'] = sentence_embeddings[0].tolist()
     response = sentence_embeddings[0].tolist()
     return response
 
